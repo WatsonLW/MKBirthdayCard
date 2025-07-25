@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy 80th Birthday Mrs. Kitty!!</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #dbe9f4;
+      text-align: center;
+      color: #5a2a27;
+      margin: 0;
+      padding: 40px;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    .message {
+      font-size: 1.5em;
+      margin: 30px 20px;
+      background: #d4f4ea;
+      border: 2px solid #92e3c0;
+      padding: 20px;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .button {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #8fdac4;
+      border: none;
+      color: white;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #79c8b0;
+    }
+
+    #surprise {
+      margin-top: 30px;
+      display: none;
+    }
+
+    #surprise img {
+      width: 350px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    audio {
+      margin-top: 20px;
+    }
+
+    .photo-gallery {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .reveal {
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+      width: 350px;
+      border-radius: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* Balloon container styles */
+    #balloons-left, #balloons-right {
+      position: fixed;
+      top: 100px;
+      width: 60px;
+      height: 80vh;
+      pointer-events: none;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    #balloons-left {
+      left: 10px;
+    }
+    #balloons-right {
+      right: 10px;
+    }
+
+    /* Balloon styles */
+    .balloon {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      background: #ff6b6b;
+      border-radius: 50%;
+      box-shadow: inset -5px -10px 15px rgba(255,255,255,0.4);
+      animation: floatUp 6s linear infinite;
+      opacity: 0.9;
+    }
+
+    .balloon::after {
+      content: "";
+      position: absolute;
+      width: 2px;
+      height: 30px;
+      background: #555;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 1px;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
+      z-index: 1;
+    }
+
+    /* Balloon colors variants */
+    .balloon.color1 { background: #ff6b6b; }
+    .balloon.color2 { background: #feca57; }
+    .balloon.color3 { background: #48dbfb; }
+    .balloon.color4 { background: #1dd1a1; }
+    .balloon.color5 { background: #5f27cd; }
+
+    /* Floating animation upward with different delays */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0.9;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-150px);
+        opacity: 0;
+      }
+    }
+
+    /* Animate balloons with different delays */
+    #balloons-left .balloon:nth-child(1) { animation-delay: 0s; }
+    #balloons-left .balloon:nth-child(2) { animation-delay: 2s; }
+    #balloons-left .balloon:nth-child(3) { animation-delay: 4s; }
+    #balloons-left .balloon:nth-child(4) { animation-delay: 1s; }
+    #balloons-left .balloon:nth-child(5) { animation-delay: 3s; }
+
+    #balloons-right .balloon:nth-child(1) { animation-delay: 1s; }
+    #balloons-right .balloon:nth-child(2) { animation-delay: 3s; }
+    #balloons-right .balloon:nth-child(3) { animation-delay: 5s; }
+    #balloons-right .balloon:nth-child(4) { animation-delay: 0s; }
+    #balloons-right .balloon:nth-child(5) { animation-delay: 2.5s; }
+  </style>
+</head>
+<body>
+
+  <div id="balloons-left">
+    <div class="balloon color1"></div>
+    <div class="balloon color2"></div>
+    <div class="balloon color3"></div>
+    <div class="balloon color4"></div>
+    <div class="balloon color5"></div>
+  </div>
+  <div id="balloons-right">
+    <div class="balloon color3"></div>
+    <div class="balloon color1"></div>
+    <div class="balloon color5"></div>
+    <div class="balloon color2"></div>
+    <div class="balloon color4"></div>
+  </div>
+
+  <h1>🎉 Happy 80th Birthday Mrs. Kitty! 🎉</h1>
+
+  <div class="message">
+    Happy 80th Birthday Mrs. Kitty! You are the best grandmother we could ask for!! I love getting to eat brunch with you and going bowling with you and the cousins. I hope this day is as special as you are! I love you!  - Watson ❤️
+  </div>
+
+  <br>
+  <button class="button" onclick="showSurprise(this)">Click for a Surprise 💝</button>
+
+  <div id="surprise">
+    <div class="photo-gallery">
+      <img class="reveal" src="photo1.jpg" alt="Family Photo 1" />
+      <img class="reveal" src="photo2.jpg" alt="Family Photo 2" />
+      <img class="reveal" src="photo3.jpg" alt="Family Photo 3" />
+      <img class="reveal" src="photo4.jpg" alt="Family Photo 4" />
+      <img class="reveal" src="photo5.jpg" alt="Family Photo 5" />
+      <img class="reveal" src="photo6.jpg" alt="Family Photo 6" />
+      <img class="reveal" src="photo7.jpg" alt="Family Photo 7" />
+      <img class="reveal" src="photo8.jpg" alt="Family Photo 8" />
+      <img class="reveal" src="photo9.jpg" alt="Family Photo 9" />
+      <img class="reveal" src="photo10.jpg" alt="Family Photo 10" />
+      <img class="reveal" src="photo11.jpg" alt="Family Photo 11" />
+    </div>
+    <audio id="birthdayAudio" loop>
+      <source src="birthday.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+
+  <script>
+    function showSurprise(buttonElement) {
+      document.getElementById("surprise").style.display = "block";
+      const audio = document.getElementById("birthdayAudio");
+      if (audio && typeof audio.play === 'function') {
+        audio.play().catch(e => console.log("Playback failed:", e));
+      }
+      revealOnScroll();
+      window.addEventListener('scroll', revealOnScroll);
+      startConfetti(buttonElement);
+    }
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.reveal');
+      for (const el of reveals) {
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const elemCenter = rect.top + rect.height / 2;
+        const distanceFromCenter = Math.abs(windowHeight / 2 - elemCenter);
+        const maxDistance = windowHeight / 2;
+        let opacity = 1 - distanceFromCenter / maxDistance;
+        opacity = Math.max(0, Math.min(1, opacity));
+        el.style.opacity = opacity;
+        el.style.transform = `translateY(${20 * (1 - opacity)}px)`;
+      }
+    }
+
+    const confettiCanvas = document.getElementById('confettiCanvas');
+    const ctx = confettiCanvas.getContext('2d');
+    let confettiPieces = [];
+    let animationFrameId;
+    let confettiTimeoutId;
+
+    function resizeCanvas() {
+      confettiCanvas.width = window.innerWidth;
+      confettiCanvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class ConfettiPiece {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 20 + 15;
+        // Velocity mostly upward with some horizontal spread
+        this.vx = (Math.random() - 0.5) * 2; // horizontal velocity between -1 and 1
+        this.vy = -(Math.random() * 3 + 4); // upward velocity between -4 and -7
+        this.angle = Math.random() * 360;
+        this.spin = Math.random() * 0.15 + 0.07;
+        this.color = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.angle += this.spin;
+        // Gravity effect to slow upward movement and eventually fall down
+        this.vy += 0.1;
+        if (this.y > confettiCanvas.height) {
+          this.y = -this.size;
+          this.x = Math.random() * confettiCanvas.width;
+          this.vx = (Math.random() - 0.5) * 2;
+          this.vy = -(Math.random() * 3 + 4);
+        }
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = this.color;
+        ctx.shadowBlur = 10;
+        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.restore();
+      }
+    }
+
+    function createConfetti(count = 400, startX = confettiCanvas.width / 2, startY = confettiCanvas.height / 2) {
+      confettiPieces = [];
+      for (let i = 0; i < count; i++) {
+        // Slightly randomize start position around button center
+        const x = startX + (Math.random() - 0.5) * 30;
+        const y = startY + (Math.random() - 0.5) * 30;
+        confettiPieces.push(new ConfettiPiece(x, y));
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      confettiPieces.forEach(piece => {
+        piece.update();
+        piece.draw();
+      });
+      animationFrameId = requestAnimationFrame(animateConfetti);
+    }
+
+    function startConfetti(buttonElement) {
+      const rect = buttonElement.getBoundingClientRect();
+      const startX = rect.left + rect.width / 2;
+      const startY = rect.top + rect.height / 2;
+      createConfetti(400, startX, startY);
+      if (!animationFrameId) {
+        animateConfetti();
+      }
+      if(confettiTimeoutId) {
+        clearTimeout(confettiTimeoutId);
+      }
+      confettiTimeoutId = setTimeout(() => {
+        if(animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = null;
+        }
+        ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+      }, 5000);
+    }
+  </script>
+
+  <canvas id="confettiCanvas" style="position: fixed; pointer-events: none; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999;"></canvas>
+</body>
+</html>
